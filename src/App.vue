@@ -1,10 +1,18 @@
 <template lang="pug">
-  #app
-    #nav
-      router-link(to="/") Home
-      router-link(to="/about") About
+  DefaultLayout
     router-view/
 </template>
+
+<script lang="ts">
+import Vue from "vue";
+import DefaultLayout from "./layouts/Default.vue";
+
+export default Vue.extend({
+  components: {
+    DefaultLayout,
+  },
+});
+</script>
 
 <style lang="less">
 @import "./assets/less/global.less";
