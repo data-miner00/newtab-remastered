@@ -37,8 +37,9 @@ a.shortcut-item {
   border-radius: 5px;
   display: inline-block;
   text-decoration: none;
-  color: inherit;
-  background: #fafafa;
+  color: white;
+  // background: #fafafa;
+  background: transparent;
   transition: background 0.2s;
 
   .favicon {
@@ -60,10 +61,18 @@ a.shortcut-item {
     font-size: 13px;
     margin: 6px 0 0;
     padding: 2px 8px;
+
+    .name {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+      text-overflow: ellipsis;
+      text-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+    }
   }
 
   &:hover {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.3);
   }
 }
 </style>
