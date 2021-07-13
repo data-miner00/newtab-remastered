@@ -13,7 +13,7 @@
             div
               img(:src="se.logo")
       .search-input
-        input(type="text" v-model="searchQuery" :placeholder="searchPlaceholder" @focus="triggerDarkerBorder" @blur="triggerDarkerBorder" @keyup.enter="search")
+        input(type="text" ref="searchbox" v-model="searchQuery" :placeholder="searchPlaceholder" @focus="triggerDarkerBorder" @blur="triggerDarkerBorder" @keyup.enter="search")
 
 </template>
 
@@ -54,12 +54,15 @@ export default Vue.extend({
       this.searchQuery = "";
     },
     selectService(_id: number): void {
+      const seaechboxElement: HTMLInputElement = this.$refs
+        .searchbox as HTMLInputElement;
       const { id, service, logo, queryString }: ISearchEngineService =
         this.searchEngines[_id - 1];
       this.serviceId = id;
       this.service = service;
       this.serviceLogo = logo;
       this.serviceQueryString = queryString;
+      seaechboxElement.focus();
     },
     toggleSelector() {
       const selectorElement: HTMLDivElement = this.$refs.hid as HTMLDivElement;
@@ -165,6 +168,10 @@ export default Vue.extend({
 
     .service-icon {
       margin-right: 10px;
+    }
+
+    .dropdown-icon {
+      color: #333;
     }
 
     .hidden-selector {
