@@ -1,25 +1,38 @@
 <template lang="pug">
   .home
+    .bg-img
+      img(:src="backgroundImgUrl")
     Header/
-    .greeting Good Morning
-    .searchbox(ref="hod")
-      .service-selector(@click="toggleSelector")
-        .service-icon(:title="service")
-          img(:src="serviceLogo")
-        .dropdown-icon
-          fa(icon="caret-down")
-        .hidden-selector(ref="hid")
-          .icons(v-for="se in searchEngines" :key="se.id" @click="selectService(se.id)")
-            div
-              img(:src="se.logo")
-      .search-input
-        input(type="text" ref="searchbox" v-model="searchQuery" :placeholder="searchPlaceholder" @focus="triggerDarkerBorder" @blur="triggerDarkerBorder" @keyup.enter="search")
-
+    .content-wrapper
+      .info
+        .time 2:07 PM
+        .place Melaka
+      .searchbox(ref="hod")
+        .service-selector(@click="toggleSelector")
+          .service-icon(:title="service")
+            img(:src="serviceLogo")
+          .dropdown-icon
+            fa(icon="caret-down")
+          .hidden-selector(ref="hid")
+            .icons(v-for="se in searchEngines" :key="se.id" @click="selectService(se.id)")
+              div
+                img(:src="se.logo")
+        .search-input
+          input(type="text" ref="searchbox" v-model="searchQuery" :placeholder="searchPlaceholder" @focus="triggerDarkerBorder" @blur="triggerDarkerBorder" @keyup.enter="search")
+      .shortcut-container
+        ShortcutItem(
+          v-for="(shortcut, index) in shortcuts"
+          :key="index"
+          :icon="shortcut.icon"
+          :name="shortcut.name"
+          :url="shortcut.url"
+        )
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import Header from "../components/Header.vue";
+import ShortcutItem from "../components/ShortcutItem.vue";
 
 type ISearchEngineService = {
   id: number;
@@ -31,6 +44,7 @@ type ISearchEngineService = {
 export default Vue.extend({
   components: {
     Header,
+    ShortcutItem,
   },
   data: () => ({
     searchQuery: "",
@@ -38,6 +52,7 @@ export default Vue.extend({
     service: "",
     serviceLogo: "",
     serviceQueryString: "",
+    backgroundImgUrl: "/test.jpg",
   }),
   beforeMount(): void {
     this.selectService(1);
@@ -79,6 +94,9 @@ export default Vue.extend({
       } else {
         searchElement.classList.add("focus");
       }
+    },
+    setBackground(): void {
+      //
     },
   },
   computed: {
@@ -137,6 +155,60 @@ export default Vue.extend({
     searchPlaceholder(): string {
       return `Search ${this.service} or type a URL`;
     },
+    shortcuts() {
+      return [
+        {
+          name: "Facebook",
+          icon: "facebook",
+          url: "https://www.facebook.com",
+        },
+        {
+          name: "Twitter",
+          icon: "twitter",
+          url: "https://www.twitter.com",
+        },
+        {
+          name: "Youtube",
+          icon: "youtube",
+          url: "https://www.youtube.com",
+        },
+        {
+          name: "Instagram",
+          icon: "instagram",
+          url: "https://www.instagram.com",
+        },
+        {
+          name: "GitHub",
+          icon: "github",
+          url: "https://www.github.com",
+        },
+        {
+          name: "Windy",
+          icon: "windy",
+          url: "https://www.windy.com",
+        },
+        {
+          name: "Reddit",
+          icon: "reddit",
+          url: "https://www.reddit.com",
+        },
+        {
+          name: "Laracasts",
+          icon: "laracasts",
+          url: "https://www.laracasts.com",
+        },
+        {
+          name: "Stack Overflow",
+          icon: "stackoverflow",
+          url: "https://www.stackoverflow.com",
+        },
+        {
+          name: "Pinterest",
+          icon: "pinterest",
+          url: "https://www.pinterest.com",
+        },
+      ];
+    },
   },
 });
 </script>
@@ -145,18 +217,52 @@ export default Vue.extend({
 @import "../assets/less/_variables.less";
 .home {
   height: 100vh;
+  position: relative;
+}
+
+.bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.content-wrapper {
+  margin: 0 auto;
+  width: 600px;
+}
+
+.info {
+  padding: 20px 0;
+  .time {
+    font-size: 86px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .place {
+    text-align: right;
+  }
 }
 
 .searchbox {
-  margin: 0 auto;
-  width: 600px;
+  width: 100%;
+
   display: flex;
   background: white;
+
   border-radius: 5px;
   border: 1px solid #eee;
 
   &.focus {
-    border: 1px solid #ccc;
+    border: 1px solid cornflowerblue;
   }
 
   .service-selector {
@@ -182,6 +288,7 @@ export default Vue.extend({
       border: 1px solid #eee;
       border-radius: 5px;
       padding: 10px 0;
+      display: none;
 
       .icons {
         height: 48px;
@@ -215,5 +322,13 @@ export default Vue.extend({
       height: 100%;
     }
   }
+}
+
+.shortcut-container {
+  width: 100%;
+  margin: 20px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 </style>
