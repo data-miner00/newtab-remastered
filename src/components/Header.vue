@@ -1,9 +1,9 @@
 <template lang="pug">
   header.header
-    .header__location Taman Sri Songket, Batu Berendam, Melaka. 7.46PM
+    .header__location
     .header__panel
       .header__panel__icon.app
-        fa(icon="dungeon")
+        fa(:icon="['far', 'newspaper']")
       .header__panel__icon.mail
         fa(:icon="['far', 'envelope']")
       .header__panel__user
@@ -31,10 +31,23 @@
 
     &__icon {
       font-size: 20px;
-      padding: 10px;
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: @round-radius;
+      transition: background 0.2s;
+
+      & > svg {
+        display: block;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
 
       &.mail {
-        margin-right: 15px;
+        margin-right: 10px;
       }
       &.chevron {
         font-size: 14px;
@@ -44,16 +57,16 @@
     &__user {
       display: flex;
       align-items: center;
-      padding: 10px 12px;
+      padding: 4px 10px;
       border-radius: @round-radius;
       transition: background 0.2s;
 
       &:hover {
-        background: #eee;
+        background: rgba(255, 255, 255, 0.3);
       }
 
       &__avatar {
-        .avatar(40px);
+        .avatar(36px);
         margin-right: 10px;
       }
     }
