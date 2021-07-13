@@ -2,6 +2,8 @@
   header.header
     .header__location
     .header__panel
+      .header__panel__icon.map
+        fa(:icon="['far', 'map']")
       .header__panel__icon.app
         fa(:icon="['far', 'newspaper']")
       .header__panel__icon.mail
@@ -11,12 +13,13 @@
           img(src="profile.png")
         .header__panel__user__username
           | Abdullah Tan bin Lim Ismail Yong Kang
-        .header__panel__icon.chevron
+        .header__panel__user__chevron
           fa(icon="chevron-down")
 </template>
 
 <style lang="less" scoped>
 @import "../assets/less/components/avatar.less";
+@import "../assets/less/components/icon.less";
 @import "../assets/less/_variables.less";
 
 .header {
@@ -30,27 +33,10 @@
     align-items: center;
 
     &__icon {
-      font-size: 20px;
-      width: 50px;
-      height: 50px;
-      display: grid;
-      place-items: center;
-      border-radius: @round-radius;
-      transition: background 0.2s;
-
-      & > svg {
-        display: block;
-      }
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.3);
-      }
+      .icon();
 
       &.mail {
         margin-right: 10px;
-      }
-      &.chevron {
-        font-size: 14px;
       }
     }
 
@@ -62,12 +48,16 @@
       transition: background 0.2s;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(232, 234, 237, 0.08);
       }
 
       &__avatar {
         .avatar(36px);
         margin-right: 10px;
+      }
+
+      &__chevron {
+        .icon(14px, false);
       }
     }
   }
