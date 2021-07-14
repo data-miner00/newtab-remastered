@@ -6,11 +6,22 @@ import {
   faCoffee,
   faChevronDown,
   faCaretDown,
+  faCloud,
+  faCloudMeatball,
+  faCloudMoon,
+  faCloudMoonRain,
+  faCloudRain,
+  faCloudShowersHeavy,
+  faCloudSun,
+  faCloudSunRain,
+  faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faComment as farComment,
   faEnvelope as farEnvelope,
   faNewspaper as farNewspaper,
+  faObjectUngroup as farObjectUngroup,
+  faMap as farMap,
 } from "@fortawesome/free-regular-svg-icons";
 
 library.add(
@@ -19,7 +30,18 @@ library.add(
   farNewspaper,
   farEnvelope,
   faChevronDown,
-  faCaretDown
+  faCaretDown,
+  farObjectUngroup,
+  farMap,
+  faCloud,
+  faCloudMeatball,
+  faCloudMoon,
+  faCloudMoonRain,
+  faCloudRain,
+  faCloudShowersHeavy,
+  faCloudSun,
+  faCloudSunRain,
+  faMapMarkerAlt
 );
 
 Vue.component("Fa", FontAwesomeIcon);
