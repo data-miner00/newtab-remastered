@@ -46,5 +46,8 @@ A project that intends to improves overall productivity with the use of internet
 10. Finance
     The website that involves monetary information and services such as crypto.
 
-11. Other
+11. Social Media
+    The website that provide friending following features.
+
+12. Other
     The website that does not fall into any of the category
