@@ -2,6 +2,8 @@
   .home
     .bg-img
       img(:src="backgroundImgUrl")
+    router-link.setting-button(to="/settings")
+      fa(:icon="['far', 'object-ungroup']")
     Header/
     .content-wrapper
       .info
@@ -19,14 +21,19 @@
                 img(:src="se.logo")
         .search-input
           input(type="text" ref="searchbox" v-model="searchQuery" :placeholder="searchPlaceholder" @focus="triggerDarkerBorder" @blur="triggerDarkerBorder" @keyup.enter="search")
-      .shortcut-container
-        ShortcutItem(
-          v-for="(shortcut, index) in shortcuts"
-          :key="index"
-          :icon="shortcut.icon"
-          :name="shortcut.name"
-          :url="shortcut.url"
-        )
+      .shortcut-section
+        .some 
+        .shortcut-container
+          ShortcutItem(
+            v-for="(shortcut, index) in shortcuts"
+            :key="index"
+            :icon="shortcut.icon"
+            :name="shortcut.name"
+            :url="shortcut.url"
+          )
+        .bottom-part
+          .left
+          .right View full list &gt;&gt;
 </template>
 
 <script lang="ts">
@@ -52,7 +59,7 @@ export default Vue.extend({
     service: "",
     serviceLogo: "",
     serviceQueryString: "",
-    backgroundImgUrl: "/test.jpg",
+    backgroundImgUrl: "/test2.jpg",
   }),
   beforeMount(): void {
     this.selectService(1);
@@ -215,6 +222,7 @@ export default Vue.extend({
 
 <style lang="less" scoped>
 @import "../assets/less/_variables.less";
+@import "../assets/less/components/icon.less";
 .home {
   height: 100vh;
   position: relative;
@@ -233,6 +241,14 @@ export default Vue.extend({
     width: 100%;
     height: 100%;
   }
+}
+
+.setting-button {
+  .icon();
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0 20px 20px 0;
 }
 
 .content-wrapper {
@@ -324,11 +340,31 @@ export default Vue.extend({
   }
 }
 
-.shortcut-container {
+.shortcut-section {
   width: 100%;
-  margin: 20px 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  .shortcut-container {
+    width: 100%;
+    margin: 20px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .bottom-part {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 0.75em;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+
+    .right {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 </style>
