@@ -63,7 +63,12 @@ export default Vue.extend({
   },
   methods: {
     search(): void {
+      // Check if the user hit enter but did not provide args
+      // In this case do nothing and return
       if (!this.searchQuery) return;
+
+      // Check if the args is a link
+      // TODO: include coverage for http, non http[s] using regex
       if (this.searchQuery.startsWith("https://")) {
         window.open(this.searchQuery, "_blank");
       } else {
@@ -106,9 +111,6 @@ export default Vue.extend({
       } else {
         searchElement.classList.add("focus");
       }
-    },
-    setBackground(): void {
-      //
     },
   },
   computed: {
