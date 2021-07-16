@@ -4,14 +4,14 @@
       .settings__container__title Settings
       .settings__container__settings
         .settings__container__settings__navigation
-          .navlink User
-          .navlink Quicklinks
-          .navlink Clock
-          .navlink Background
-          .navlink Server
+          router-link.navlink(:to="{ name: 'user' }" exact-active-class="eactive") User
+          router-link.navlink(:to="{ name: 'quicklinks' }" exact-active-class="eactive") Quicklinks
+          router-link.navlink(:to="{ name: 'clock' }" exact-active-class="eactive") Clock
+          router-link.navlink(:to="{ name: 'background' }" exact-active-class="eactive") Background
+          router-link.navlink(:to="{ name: 'server' }" exact-active-class="eactive") Server
           .seperator
-          .navlink About
-          .navlink Privacy
+          router-link.navlink(:to="{ name: 'about' }" exact-active-class="eactive") About
+          router-link.navlink(:to="{ name: 'home' }" exact-active-class="eactive") Privacy
         .settings__container__settings__content 
           router-view/
 </template>
@@ -27,6 +27,10 @@ export default Vue.extend({
 </script>
 
 <style lang="less" scoped>
+.eactive {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 .settings {
   min-height: 100vh;
 
@@ -50,11 +54,16 @@ export default Vue.extend({
         flex-shrink: 0;
 
         .navlink {
+          display: block;
           font-size: 1.5em;
           padding: 10px 15px;
-          background: rgba(0, 0, 0, 0.3);
+          transition: background 0.2s;
           border-radius: 5px;
           margin: 5px 10px 5px 0;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.3);
+          }
         }
 
         .seperator {
