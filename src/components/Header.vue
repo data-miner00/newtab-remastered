@@ -2,11 +2,11 @@
   header.header
     .header__location
     .header__panel
-      .header__panel__icon.map
+      a.header__panel__icon.map(:href="mapUrl" title="Maps" target="_blank")
         fa(:icon="['far', 'map']")
-      .header__panel__icon.app
+      a.header__panel__icon.app(:href="newsUrl" title="News" target="_blank")
         fa(:icon="['far', 'newspaper']")
-      .header__panel__icon.mail
+      a.header__panel__icon.mail(:href="mailUrl" title="Email" target="_blank")
         fa(:icon="['far', 'envelope']")
       .header__panel__user
         .header__panel__user__avatar
@@ -28,6 +28,15 @@ export default Vue.extend({
     },
     avatarUrl(): string {
       return this.$store.state.avatarUrl || "profile.png";
+    },
+    mapUrl(): string {
+      return this.$store.state.mapUrl || "https://www.google.com.my/maps";
+    },
+    newsUrl(): string {
+      return this.$store.state.newsUrl || "https://news.microsoft.com/en-my/";
+    },
+    mailUrl(): string {
+      return this.$store.state.mailUrl || "https://www.hotmail.com";
     },
   },
 });
