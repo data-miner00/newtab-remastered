@@ -15,6 +15,7 @@ import {
   faCloudSun,
   faCloudSunRain,
   faMapMarkerAlt,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faComment as farComment,
@@ -41,7 +42,8 @@ library.add(
   faCloudShowersHeavy,
   faCloudSun,
   faCloudSunRain,
-  faMapMarkerAlt
+  faMapMarkerAlt,
+  faArrowLeft
 );
 
 Vue.component("Fa", FontAwesomeIcon);
