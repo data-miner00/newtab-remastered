@@ -7,11 +7,15 @@ A project that intends to improves overall productivity with the use of internet
 - [ ] Add animating background
 - [ ] Add change background capability
 - [ ] Add detect change on color saturation to color
-- [ ] Add a page for user to change username
-- [ ] Add a customization page for settings
+- [x] Add a page for user to change username
+- [x] Add a customization page for settings
 - [ ] Add i18n
 - [ ] Add functionality to search for page
 - [ ] Add functionality to add a page
+- [ ] Add background user referral link on bottom left
+- [ ] Optimize performance
+- [ ] Add return button to main page from setting page
+- [ ] Add clear or reset button
 - [ ] ...
 
 ## Category
