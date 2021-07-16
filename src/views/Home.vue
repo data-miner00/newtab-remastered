@@ -85,7 +85,11 @@ export default Vue.extend({
     },
     toggleSelector() {
       const selectorElement: HTMLDivElement = this.$refs.hid as HTMLDivElement;
-      if (selectorElement && selectorElement.style.display == "none") {
+
+      // Silence unknown reason of triggering the function
+      if (!selectorElement) return;
+
+      if (selectorElement.style.display == "none") {
         selectorElement.style.display = "block";
       } else {
         selectorElement.style.display = "none";
@@ -93,7 +97,11 @@ export default Vue.extend({
     },
     triggerDarkerBorder() {
       const searchElement: HTMLDivElement = this.$refs.hod as HTMLDivElement;
-      if (searchElement && searchElement.classList.contains("focus")) {
+
+      // Silence unknown reason of triggering the function
+      if (!searchElement) return;
+
+      if (searchElement.classList.contains("focus")) {
         searchElement.classList.remove("focus");
       } else {
         searchElement.classList.add("focus");
