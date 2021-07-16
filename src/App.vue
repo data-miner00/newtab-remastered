@@ -1,5 +1,4 @@
 <template lang="pug">
-  //- DefaultLayout
   #app
     .bg-img
       img(:src="backgroundImgUrl")
@@ -9,11 +8,17 @@
 
 <script lang="ts">
 import Vue from "vue";
-// import DefaultLayout from "./layouts/Default.vue";
+import { loadLS } from "@/services";
+import { StorageType } from "@/models/StorageType";
 
 export default Vue.extend({
-  components: {
-    // DefaultLayout,
+  beforeMount(): void {
+    loadLS(StorageType.USERNAME);
+    loadLS(StorageType.AVATARURL);
+    loadLS(StorageType.MAILURL);
+    loadLS(StorageType.NEWSURL);
+    loadLS(StorageType.MAPURL);
+    loadLS(StorageType.BGURL);
   },
   data: () => ({
     backgroundImgUrl: "/test2.jpg",
