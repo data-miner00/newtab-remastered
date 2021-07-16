@@ -42,6 +42,7 @@ export default Vue.extend({
   height: 100%;
   object-fit: cover;
   object-position: center;
+  background: #26262b;
   z-index: -1;
   img {
     width: 100%;
