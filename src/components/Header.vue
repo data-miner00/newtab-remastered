@@ -10,12 +10,28 @@
         fa(:icon="['far', 'envelope']")
       .header__panel__user
         .header__panel__user__avatar
-          img(src="profile.png")
-        .header__panel__user__username
-          | Abdullah Tan bin Lim Ismail Yong Kang
+          img(:src="avatarUrl")
+        .header__panel__user__username {{ username }}
         .header__panel__user__chevron
           fa(icon="chevron-down")
 </template>
+
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+  computed: {
+    username(): string {
+      return (
+        this.$store.state.username || "Abdullah Tan bin Lim Ismail Yong Kang"
+      );
+    },
+    avatarUrl(): string {
+      return this.$store.state.avatarUrl || "profile.png";
+    },
+  },
+});
+</script>
 
 <style lang="less" scoped>
 @import "../assets/less/components/avatar.less";
