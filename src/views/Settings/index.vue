@@ -1,7 +1,10 @@
 <template lang="pug">
   .settings
     .settings__container
-      .settings__container__title Settings
+      .settings__container__header
+        router-link.settings__container__header__back(to="/" title="Go back")
+          fa(icon="arrow-left") 
+        .settings__container__header__title Settings
       .settings__container__settings
         .settings__container__settings__navigation
           router-link.navlink(:to="{ name: 'user' }" exact-active-class="eactive") User
@@ -20,16 +23,16 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  data: () => ({
-    //
-  }),
+  methods: {
+    // goBack(): void {
+    //   this.$router.go
+    // },
+  },
 });
 </script>
 
 <style lang="less" scoped>
-.eactive {
-  background: rgba(0, 0, 0, 0.3);
-}
+@import "../../assets/less/components/icon.less";
 
 .settings {
   min-height: 100vh;
@@ -38,11 +41,20 @@ export default Vue.extend({
     width: 960px;
     margin: 0 auto;
 
-    &__title {
-      font-size: 36px;
-      font-weight: 600;
+    &__header {
       border-bottom: 1px solid #eee;
       padding: 20px 0;
+      display: flex;
+      &__back {
+        .icon(20px, true);
+        cursor: pointer;
+        margin-right: 20px;
+      }
+
+      &__title {
+        font-size: 36px;
+        font-weight: 600;
+      }
     }
 
     &__settings {
@@ -60,6 +72,10 @@ export default Vue.extend({
           transition: background 0.2s;
           border-radius: 5px;
           margin: 5px 10px 5px 0;
+
+          &.eactive {
+            background: rgba(0, 0, 0, 0.3);
+          }
 
           &:hover {
             background: rgba(0, 0, 0, 0.3);
