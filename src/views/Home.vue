@@ -1,7 +1,5 @@
 <template lang="pug">
   .home
-    .bg-img
-      img(:src="backgroundImgUrl")
     router-link.setting-button(to="/settings")
       fa(:icon="['far', 'object-ungroup']")
     Header/
@@ -59,7 +57,6 @@ export default Vue.extend({
     service: "",
     serviceLogo: "",
     serviceQueryString: "",
-    backgroundImgUrl: "/test2.jpg",
   }),
   beforeMount(): void {
     this.selectService(1);
@@ -225,22 +222,6 @@ export default Vue.extend({
 @import "../assets/less/components/icon.less";
 .home {
   height: 100vh;
-  position: relative;
-}
-
-.bg-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: -1;
-  img {
-    width: 100%;
-    height: 100%;
-  }
 }
 
 .setting-button {
