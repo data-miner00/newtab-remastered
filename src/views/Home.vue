@@ -211,6 +211,12 @@ export default Vue.extend({
         },
         {
           id: 8,
+          service: "Qwant",
+          logo: "/favicons/qwant.png",
+          queryString: "https://www.qwant.com/?q=",
+        },
+        {
+          id: 9,
           service: "Library Genesis",
           logo: "/favicons/libgen.png",
           queryString: "http://libgen.rs/scimag/?q=",
