@@ -1,6 +1,6 @@
 <template lang="pug">
   .home
-    router-link.setting-button(to="/settings")
+    router-link.setting-button(to="/settings" title="Settings")
       fa(:icon="['far', 'object-ungroup']")
     Header/
     .content-wrapper
