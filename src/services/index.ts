@@ -37,7 +37,12 @@ export const loadLS = (type: StorageType): void => {
       default:
         console.log("u wot m8");
     }
-  } else console.log(`The value for ${type} does not exist`);
+  } else
+    console.log(
+      `%c Notice: %c The value for ${type} does not exist`,
+      "color: white; background: #00d1b2; font-weight: bold; border-radius: 2px; ",
+      "color: #00947e; background: #ebfffc;"
+    );
 };
 
 export const setLS = (type: StorageType, value: string): void => {
