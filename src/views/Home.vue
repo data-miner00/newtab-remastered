@@ -5,7 +5,7 @@
     Header/
     .content-wrapper
       .info
-        .time 2:07 PM
+        .time {{ hours }}#[span(ref="colon") :]{{ minutes }} {{ ampm }}
         .place Melaka
       .searchbox(ref="hod")
         .service-selector(@click="toggleSelector")
@@ -57,9 +57,37 @@ export default Vue.extend({
     service: "",
     serviceLogo: "",
     serviceQueryString: "",
+
+    hours: "0",
+    minutes: "00",
+    ampm: "",
   }),
   beforeMount(): void {
+    // TODO: Change to mounted
     this.selectService(1);
+  },
+  mounted(): void {
+    // Run the compute timer for the first time
+    this.computeCurrentTime();
+
+    // If progressive clock mode is on, run every 30s
+    if (this.progressiveClockMode) {
+      setInterval(() => {
+        console.log("PROGRESSIVE MODE ON!");
+        this.computeCurrentTime();
+      }, 30000);
+    }
+
+    // If blinking mode is on, run every 2s
+    if (this.blinkingColonMode) {
+      setInterval(() => {
+        const colon: HTMLSpanElement = this.$refs.colon as HTMLSpanElement;
+        colon.style.visibility = "hidden";
+        setTimeout(() => {
+          colon.style.visibility = "visible";
+        }, 500);
+      }, 2000);
+    }
   },
   methods: {
     search(): void {
@@ -111,6 +139,16 @@ export default Vue.extend({
       } else {
         searchElement.classList.add("focus");
       }
+    },
+    computeCurrentTime(): void {
+      const dateObj = new Date();
+      const hours = dateObj.getHours();
+      const isAfternoon: boolean = hours >= 12;
+      this.hours = (
+        isAfternoon ? (hours == 12 ? 12 : hours - 12) : hours
+      ).toString();
+      this.minutes = dateObj.getMinutes().toString().padStart(2, "0");
+      this.ampm = isAfternoon ? "PM" : "AM";
     },
   },
   computed: {
@@ -222,6 +260,12 @@ export default Vue.extend({
           url: "https://www.pinterest.com",
         },
       ];
+    },
+    progressiveClockMode(): boolean {
+      return this.$store.state.clockMode;
+    },
+    blinkingColonMode(): boolean {
+      return this.$store.state.colonMode;
     },
   },
 });
