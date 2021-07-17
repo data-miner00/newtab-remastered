@@ -1,26 +1,46 @@
-# productivity
+# Newtab Remastered
 
-A project that intends to improves overall productivity with the use of internet.
+A project that was heavilly inspired by Google Chrome's new tab page and intends to mitigate some of the shortcoming and add more functionalities that suits the most for my current workflow.
+
+## Screenshots
+
+There is a background photo shipped along with the app which is by Javier Garcia on [Unsplash](https://unsplash.com/) at [this link](https://unsplash.com/photos/jJbQBP_yh68)
+
+## Features
+
+- Supercharged search bar
+- Customized quicklinks
+- Quick access to favorite sites
+- Fake profile and location
+- Clock settings (rofl)
+
+## Development
+
+1. Install Vue CLI (Maybe not? I'm not sure)
+2. After clone, run `yarn` to install deps
+3. To serve on dev server, run `yarn serve`
 
 ## Todos
 
 - [ ] Add animating background
-- [ ] Add change background capability
+- [x] Add change background capability
 - [ ] Add detect change on color saturation to color
 - [x] Add a page for user to change username
 - [x] Add a customization page for settings
-- [ ] Add i18n
+- [ ] Add i18n and Japanese translation
 - [ ] Add functionality to search for page
 - [ ] Add functionality to add a page
 - [ ] Add background user referral link on bottom left
 - [ ] Optimize performance
-- [ ] Add return button to main page from setting page
+- [x] Add return button to main page from setting page
 - [ ] Add clear or reset button
 - [ ] Add a custom message component ay quicklinks
 - [ ] Add data validation and error message
 - [ ] ...
 
 ## Category
+
+The categories used to describe the webpages as a whole based on their characteristics and nature.
 
 1. Commerce
    The website that involves any form of online commerce pattern.
@@ -57,3 +77,7 @@ A project that intends to improves overall productivity with the use of internet
 
 12. Other
     The website that does not fall into any of the category
+
+## To Nuxt or not to Nuxt
+
+This is an ongoing debate with myself whether should Nuxt it but maybe not coz it is too muchwork.
