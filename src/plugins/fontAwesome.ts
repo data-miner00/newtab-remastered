@@ -16,6 +16,7 @@ import {
   faCloudSunRain,
   faMapMarkerAlt,
   faArrowLeft,
+  faLanguage,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faComment as farComment,
@@ -33,17 +34,18 @@ library.add(
   faChevronDown,
   faCaretDown,
   farObjectUngroup,
-  farMap,
-  faCloud,
-  faCloudMeatball,
-  faCloudMoon,
-  faCloudMoonRain,
-  faCloudRain,
-  faCloudShowersHeavy,
-  faCloudSun,
-  faCloudSunRain,
-  faMapMarkerAlt,
-  faArrowLeft
+  farMap, // not used
+  faCloud, // not used
+  faCloudMeatball, // not used
+  faCloudMoon, // not used
+  faCloudMoonRain, // not used
+  faCloudRain, // not used
+  faCloudShowersHeavy, // not used
+  faCloudSun, // not used
+  faCloudSunRain, // not used
+  faMapMarkerAlt, // not used
+  faArrowLeft,
+  faLanguage
 );
 
 Vue.component("Fa", FontAwesomeIcon);
