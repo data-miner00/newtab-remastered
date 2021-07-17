@@ -61,6 +61,10 @@ export default Vue.extend({
     hours: "0",
     minutes: "00",
     ampm: "",
+
+    progressiveInterval: 0,
+    blinkingInterval: 0,
+    blinkingTimeout: 0,
   }),
   beforeMount(): void {
     // TODO: Change to mounted
@@ -72,22 +76,18 @@ export default Vue.extend({
 
     // If progressive clock mode is on, run every 30s
     if (this.progressiveClockMode) {
-      setInterval(() => {
-        console.log("PROGRESSIVE MODE ON!");
-        this.computeCurrentTime();
-      }, 30000);
+      this.initiateClock();
     }
 
     // If blinking mode is on, run every 2s
     if (this.blinkingColonMode) {
-      setInterval(() => {
-        const colon: HTMLSpanElement = this.$refs.colon as HTMLSpanElement;
-        colon.style.visibility = "hidden";
-        setTimeout(() => {
-          colon.style.visibility = "visible";
-        }, 500);
-      }, 2000);
+      this.initiateBlink();
     }
+  },
+  beforeDestroy(): void {
+    clearInterval(this.progressiveInterval);
+    clearInterval(this.blinkingInterval);
+    clearTimeout(this.blinkingTimeout);
   },
   methods: {
     search(): void {
@@ -149,6 +149,20 @@ export default Vue.extend({
       ).toString();
       this.minutes = dateObj.getMinutes().toString().padStart(2, "0");
       this.ampm = isAfternoon ? "PM" : "AM";
+    },
+    initiateClock(): void {
+      this.progressiveInterval = setInterval(() => {
+        this.computeCurrentTime();
+      }, 30000);
+    },
+    initiateBlink(): void {
+      this.blinkingInterval = setInterval(() => {
+        const colon: HTMLSpanElement = this.$refs.colon as HTMLSpanElement;
+        colon.style.visibility = "hidden";
+        this.blinkingTimeout = setTimeout(() => {
+          colon.style.visibility = "visible";
+        }, 500);
+      }, 2000);
     },
   },
   computed: {
