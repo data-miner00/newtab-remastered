@@ -60,6 +60,14 @@ const routes: Array<RouteConfig> = [
         component: () =>
           import(/* webpackChunkName: "about" */ "../views/Settings/About.vue"),
       },
+      {
+        path: "privacy",
+        name: "privacy",
+        component: () =>
+          import(
+            /* webpackChunkName: "privacy" */ "../views/Settings/Privacy.vue"
+          ),
+      },
     ],
   },
   {

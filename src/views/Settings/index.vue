@@ -14,7 +14,7 @@
           router-link.navlink(:to="{ name: 'server' }" exact-active-class="eactive") Server
           .seperator
           router-link.navlink(:to="{ name: 'about' }" exact-active-class="eactive") About
-          router-link.navlink(:to="{ name: 'home' }" exact-active-class="eactive") Privacy
+          router-link.navlink(:to="{ name: 'privacy' }" exact-active-class="eactive") Privacy
         .settings__container__settings__content 
           router-view/
 </template>
