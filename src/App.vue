@@ -19,6 +19,8 @@ export default Vue.extend({
     loadLS(StorageType.NEWSURL);
     loadLS(StorageType.MAPURL);
     loadLS(StorageType.BGURL);
+    loadLS(StorageType.CLOCKMODE);
+    loadLS(StorageType.COLONMODE);
   },
   computed: {
     backgroundImgUrl(): string {

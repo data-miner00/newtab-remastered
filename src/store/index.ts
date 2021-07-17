@@ -11,6 +11,8 @@ export default new Vuex.Store({
     newsUrl: null,
     mapUrl: null,
     bgUrl: null,
+    clockMode: false,
+    colonMode: false,
   },
   mutations: {
     setUsername(state, payload) {
@@ -30,6 +32,12 @@ export default new Vuex.Store({
     },
     setBgUrl(state, payload) {
       state.bgUrl = payload;
+    },
+    setClockMode(state, payload) {
+      state.clockMode = payload;
+    },
+    setColonMode(state, payload) {
+      state.colonMode = payload;
     },
   },
   actions: {},

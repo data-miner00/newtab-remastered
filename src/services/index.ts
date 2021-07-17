@@ -24,6 +24,12 @@ export const loadLS = (type: StorageType): void => {
       case StorageType.BGURL:
         store.commit("setBgUrl", value);
         break;
+      case StorageType.CLOCKMODE:
+        store.commit("setClockMode", JSON.parse(value));
+        break;
+      case StorageType.COLONMODE:
+        store.commit("setColonMode", JSON.parse(value));
+        break;
       default:
         console.log("u wot m8");
     }
@@ -51,6 +57,12 @@ export const setLS = (type: StorageType, value: string): void => {
       break;
     case StorageType.BGURL:
       store.commit("setBgUrl", value);
+      break;
+    case StorageType.CLOCKMODE:
+      store.commit("setClockMode", JSON.parse(value));
+      break;
+    case StorageType.COLONMODE:
+      store.commit("setColonMode", JSON.parse(value));
       break;
     default:
       console.log("u wot m8");
