@@ -5,7 +5,7 @@
     .about__description 
       | Tried to be minimal but as functions grows the heavier the app gets sadge.
     .about__github 
-      | The source code can be found on #[a.gh(href="" target="blank") Github]
+      | The source code can be found on #[a.gh(href="https://github.com/data-miner00/newtab-remastered" target="blank") Github]
 </template>
 
 <style lang="less" scoped>
