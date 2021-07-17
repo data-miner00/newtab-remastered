@@ -16,6 +16,8 @@ A project that intends to improves overall productivity with the use of internet
 - [ ] Optimize performance
 - [ ] Add return button to main page from setting page
 - [ ] Add clear or reset button
+- [ ] Add a custom message component ay quicklinks
+- [ ] Add data validation and error message
 - [ ] ...
 
 ## Category
