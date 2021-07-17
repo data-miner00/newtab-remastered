@@ -5,4 +5,6 @@ export enum StorageType {
   NEWSURL = "newsUrl",
   MAILURL = "mailUrl",
   BGURL = "backgroundUrl",
+  CLOCKMODE = "clockMode",
+  COLONMODE = "colonMode",
 }
