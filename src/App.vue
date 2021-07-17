@@ -20,9 +20,11 @@ export default Vue.extend({
     loadLS(StorageType.MAPURL);
     loadLS(StorageType.BGURL);
   },
-  data: () => ({
-    backgroundImgUrl: "/test2.jpg",
-  }),
+  computed: {
+    backgroundImgUrl(): string {
+      return this.$store.state.bgUrl || "/test2.jpg";
+    },
+  },
 });
 </script>
 
