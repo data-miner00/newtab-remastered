@@ -21,6 +21,7 @@ export default Vue.extend({
     loadLS(StorageType.BGURL);
     loadLS(StorageType.CLOCKMODE);
     loadLS(StorageType.COLONMODE);
+    loadLS(StorageType.PLACE);
   },
   computed: {
     backgroundImgUrl(): string {

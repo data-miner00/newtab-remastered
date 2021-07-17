@@ -6,7 +6,7 @@
     .content-wrapper
       .info
         .time {{ hours }}#[span(ref="colon") :]{{ minutes }} {{ ampm }}
-        .place Melaka
+        .place {{ place }}
       .searchbox(ref="hod")
         .service-selector(@click="toggleSelector")
           .service-icon(:title="service")
@@ -279,6 +279,9 @@ export default Vue.extend({
     },
     blinkingColonMode(): boolean {
       return this.$store.state.colonMode;
+    },
+    place(): string {
+      return this.$store.state.place || "Hypatia, Mars";
     },
   },
 });

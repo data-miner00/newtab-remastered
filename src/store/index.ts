@@ -13,6 +13,7 @@ export default new Vuex.Store({
     bgUrl: null,
     clockMode: false,
     colonMode: false,
+    place: null,
   },
   mutations: {
     setUsername(state, payload) {
@@ -39,7 +40,11 @@ export default new Vuex.Store({
     setColonMode(state, payload) {
       state.colonMode = payload;
     },
+    setPlace(state, payload) {
+      state.place = payload;
+    },
   },
+  // TODO: Add actions to remove and reset
   actions: {},
   modules: {},
 });

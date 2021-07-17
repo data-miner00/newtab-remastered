@@ -5,6 +5,7 @@ export const loadLS = (type: StorageType): void => {
   const value: string | null = localStorage.getItem(type);
 
   if (value) {
+    // TODO: Externalize switch case to a seperate func
     switch (type) {
       case StorageType.USERNAME:
         store.commit("setUsername", value);
@@ -29,6 +30,9 @@ export const loadLS = (type: StorageType): void => {
         break;
       case StorageType.COLONMODE:
         store.commit("setColonMode", JSON.parse(value));
+        break;
+      case StorageType.PLACE:
+        store.commit("setPlace", value);
         break;
       default:
         console.log("u wot m8");
@@ -63,6 +67,9 @@ export const setLS = (type: StorageType, value: string): void => {
       break;
     case StorageType.COLONMODE:
       store.commit("setColonMode", JSON.parse(value));
+      break;
+    case StorageType.PLACE:
+      store.commit("setPlace", value);
       break;
     default:
       console.log("u wot m8");

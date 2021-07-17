@@ -7,4 +7,5 @@ export enum StorageType {
   BGURL = "backgroundUrl",
   CLOCKMODE = "clockMode",
   COLONMODE = "colonMode",
+  PLACE = "place",
 }

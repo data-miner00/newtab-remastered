@@ -10,9 +10,16 @@
     SettingItem(
       title="Set avatar"
       description="The user avatar has no use but to show in the main page, so put anything all you want. provide the url to the imag."
-      placeholder="https://localhost:8080/profile.jpg"
+      placeholder="eg. /profile.jpg"
       :initialData="initialAvatar"
       @change="avatarChange"
+    )
+    SettingItem(
+      title="Set place"
+      description="The place or location that you resides, if possible. Else you can set at any place u want idgaf lol."
+      placeholder="eg. Mars"
+      :initialData="initialPlace"
+      @change="placeChange"
     )
     
 </template>
@@ -43,6 +50,14 @@ export default Vue.extend({
     },
     avatarChange(newLink: string): void {
       setLS(StorageType.AVATARURL, newLink);
+    },
+    placeChange(newPlace: string) {
+      setLS(StorageType.PLACE, newPlace);
+    },
+  },
+  computed: {
+    initialPlace(): string {
+      return this.$store.state.place || "";
     },
   },
 });
