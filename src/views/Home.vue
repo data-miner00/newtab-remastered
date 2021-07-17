@@ -66,11 +66,10 @@ export default Vue.extend({
     blinkingInterval: 0,
     blinkingTimeout: 0,
   }),
-  beforeMount(): void {
-    // TODO: Change to mounted
-    this.selectService(1);
-  },
   mounted(): void {
+    // Selete the first search engine
+    this.selectService(1);
+
     // Run the compute timer for the first time
     this.computeCurrentTime();
 
