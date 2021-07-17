@@ -1,3 +1,29 @@
 <template lang="pug">
-  .about about
+  .about 
+    .about__app Newtab Remastered
+    .about__version Version 1.0.0
+    .about__description 
+      | Tried to be minimal but as functions grows the heavier the app gets sadge.
+    .about__github 
+      | The source code can be found on #[a.gh(href="" target="blank") Github]
 </template>
+
+<style lang="less" scoped>
+.about {
+  &__app {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 1em;
+  }
+  &__version {
+    font-size: 1.5em;
+    margin-bottom: 0.75em;
+  }
+  &__github {
+    .gh {
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  }
+}
+</style>
