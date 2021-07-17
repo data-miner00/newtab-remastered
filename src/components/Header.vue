@@ -2,6 +2,8 @@
   header.header
     .header__location
     .header__panel
+      a.header__panel__icon.lang(href="https://translate.google.com.my" title="Google Translate" target="_blank")
+        fa(icon="language")
       a.header__panel__icon.map(:href="mapUrl" title="Maps" target="_blank")
         fa(:icon="['far', 'map']")
       a.header__panel__icon.app(:href="newsUrl" title="News" target="_blank")
