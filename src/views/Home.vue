@@ -5,7 +5,7 @@
     Header/
     .content-wrapper
       .info
-        DigitalClock(:hours="hours" :minutes="minutes" :ampm="ampm")
+        DigitalClock/
         .place {{ place }}
       .searchbox(ref="hod")
         .service-selector(@click="toggleSelector")
@@ -71,36 +71,10 @@ export default Vue.extend({
     service: "",
     serviceLogo: "",
     serviceQueryString: "",
-
-    hours: "0",
-    minutes: "00",
-    ampm: "",
-
-    progressiveInterval: 0,
-    blinkingInterval: 0,
-    blinkingTimeout: 0,
   }),
   mounted(): void {
     // Selete the first search engine
     this.selectService(1);
-
-    // Run the compute timer for the first time
-    this.computeCurrentTime();
-
-    // If progressive clock mode is on, run every 30s
-    if (this.progressiveClockMode) {
-      this.initiateClock();
-    }
-
-    // If blinking mode is on, run every 2s
-    if (this.blinkingColonMode) {
-      this.initiateBlink();
-    }
-  },
-  beforeDestroy(): void {
-    clearInterval(this.progressiveInterval);
-    clearInterval(this.blinkingInterval);
-    clearTimeout(this.blinkingTimeout);
   },
   methods: {
     search(): void {
@@ -166,30 +140,6 @@ export default Vue.extend({
       if (!tipElement) return;
 
       tipElement.style.visibility = "hidden";
-    },
-    computeCurrentTime(): void {
-      const dateObj = new Date();
-      const hours = dateObj.getHours();
-      const isAfternoon: boolean = hours >= 12;
-      this.hours = (
-        isAfternoon ? (hours == 12 ? 12 : hours - 12) : hours
-      ).toString();
-      this.minutes = dateObj.getMinutes().toString().padStart(2, "0");
-      this.ampm = isAfternoon ? "PM" : "AM";
-    },
-    initiateClock(): void {
-      this.progressiveInterval = setInterval(() => {
-        this.computeCurrentTime();
-      }, 30000);
-    },
-    initiateBlink(): void {
-      this.blinkingInterval = setInterval(() => {
-        const colon: HTMLSpanElement = this.$refs.colon as HTMLSpanElement;
-        colon.style.visibility = "hidden";
-        this.blinkingTimeout = setTimeout(() => {
-          colon.style.visibility = "visible";
-        }, 500);
-      }, 2000);
     },
     navigateSearch(evt: any): void {
       if (evt.key == "k") {
@@ -314,12 +264,6 @@ export default Vue.extend({
           url: "https://www.investopedia.com/",
         },
       ];
-    },
-    progressiveClockMode(): boolean {
-      return this.$store.state.clockMode;
-    },
-    blinkingColonMode(): boolean {
-      return this.$store.state.colonMode;
     },
     place(): string {
       return this.$store.state.place || "Hypatia, Mars";
