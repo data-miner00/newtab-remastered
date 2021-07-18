@@ -18,7 +18,16 @@
               div
                 img(:src="se.logo")
         .search-input
-          input(type="text" ref="searchbox" v-model="searchQuery" :placeholder="searchPlaceholder" @focus="triggerDarkerBorder" @blur="triggerDarkerBorder" @keyup.enter="search")
+          input(
+            type="text" 
+            ref="searchbox" 
+            v-model="searchQuery" 
+            :placeholder="searchPlaceholder" 
+            @focus="triggerDarkerBorder(); hideTip()" 
+            @blur="triggerDarkerBorder(); showTip()" 
+            @keyup.enter="search"
+          )
+          .tips(ref="tip") CTRL+K
       .shortcut-section
         .some 
         .shortcut-container
@@ -143,6 +152,20 @@ export default Vue.extend({
       } else {
         searchElement.classList.add("focus");
       }
+    },
+    showTip(): void {
+      const tipElement: HTMLDivElement = this.$refs.tip as HTMLDivElement;
+
+      if (!tipElement) return;
+
+      tipElement.style.visibility = "visible";
+    },
+    hideTip(): void {
+      const tipElement: HTMLDivElement = this.$refs.tip as HTMLDivElement;
+
+      if (!tipElement) return;
+
+      tipElement.style.visibility = "hidden";
     },
     computeCurrentTime(): void {
       const dateObj = new Date();
@@ -391,6 +414,7 @@ export default Vue.extend({
   }
   .search-input {
     flex-grow: 1;
+    position: relative;
 
     input {
       font-size: 1rem;
@@ -401,6 +425,24 @@ export default Vue.extend({
       background: transparent;
       width: 100%;
       height: 100%;
+    }
+
+    .tips {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      padding: 5px;
+      transform: translateY(-50%);
+      font-weight: 600;
+      color: white;
+      border-radius: 5px;
+      background: rgb(240, 240, 240);
+      cursor: default;
+      transition: background 0.2s;
+
+      &:hover {
+        background: lightgray;
+      }
     }
   }
 }
