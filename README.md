@@ -33,9 +33,11 @@ There is a background photo shipped along with the app which is by Javier Garcia
 - [ ] Add background user referral link on bottom left
 - [ ] Optimize performance
 - [x] Add return button to main page from setting page
-- [ ] Add clear or reset button
+- [ ] Feat: Add clear or reset button
 - [ ] Add a custom message component ay quicklinks
 - [ ] Add data validation and error message
+- [ ] Improvement: Enable the dropdown to be close when click elsewhere
+- [ ] Improvement: Enable the selected service to be default
 - [ ] ...
 
 ## Category
