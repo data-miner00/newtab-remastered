@@ -1,11 +1,11 @@
 <template lang="pug">
-  .home
+  .home(tabindex="0" @keydown.ctrl.prevent="navigateSearch")
     router-link.setting-button(to="/settings" title="Settings")
       fa(:icon="['far', 'object-ungroup']")
     Header/
     .content-wrapper
       .info
-        .time {{ hours }}#[span(ref="colon") :]{{ minutes }} {{ ampm }}
+        DigitalClock(:hours="hours" :minutes="minutes" :ampm="ampm")
         .place {{ place }}
       .searchbox(ref="hod")
         .service-selector(@click="toggleSelector")
@@ -14,7 +14,7 @@
           .dropdown-icon
             fa(icon="caret-down")
           .hidden-selector(ref="hid")
-            .icons(v-for="se in searchEngines" :key="se.id" @click="selectService(se.id)")
+            .icons(v-for="se in searchEngines" :key="se.id" @click="selectService(se.id)" :title="se.service")
               div
                 img(:src="se.logo")
         .search-input
@@ -38,6 +38,7 @@
 import Vue from "vue";
 import Header from "../components/Header.vue";
 import ShortcutItem from "../components/ShortcutItem.vue";
+import DigitalClock from "../components/DigitalClock.vue";
 
 type ISearchEngineService = {
   id: number;
@@ -50,6 +51,7 @@ export default Vue.extend({
   components: {
     Header,
     ShortcutItem,
+    DigitalClock,
   },
   metaInfo: {
     title: "Your trusty new tab app | Newtab Remastered",
@@ -165,6 +167,13 @@ export default Vue.extend({
           colon.style.visibility = "visible";
         }, 500);
       }, 2000);
+    },
+    navigateSearch(evt: any): void {
+      if (evt.key == "k") {
+        const searchboxElement: HTMLInputElement = this.$refs
+          .searchbox as HTMLInputElement;
+        searchboxElement.focus();
+      }
     },
   },
   computed: {
@@ -318,11 +327,7 @@ export default Vue.extend({
 
 .info {
   padding: 20px 0;
-  .time {
-    font-size: 86px;
-    font-weight: 700;
-    text-align: center;
-  }
+
   .place {
     text-align: right;
   }
