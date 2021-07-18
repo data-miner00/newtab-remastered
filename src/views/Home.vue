@@ -252,14 +252,14 @@ export default Vue.extend({
           url: "https://www.instagram.com",
         },
         {
-          name: "GitHub",
-          icon: "github",
-          url: "https://www.github.com",
-        },
-        {
           name: "Windy",
           icon: "windy",
           url: "https://www.windy.com",
+        },
+        {
+          name: "GitHub",
+          icon: "github",
+          url: "https://www.github.com",
         },
         {
           name: "Reddit",
@@ -267,19 +267,19 @@ export default Vue.extend({
           url: "https://www.reddit.com",
         },
         {
-          name: "Laracasts",
-          icon: "laracasts",
-          url: "https://www.laracasts.com",
+          name: "Next.js",
+          icon: "next",
+          url: "https://nextjs.org/",
         },
         {
-          name: "Stack Overflow",
-          icon: "stackoverflow",
-          url: "https://www.stackoverflow.com",
+          name: "Vite.js",
+          icon: "vitejs",
+          url: "https://vitejs.dev/",
         },
         {
-          name: "Pinterest",
-          icon: "pinterest",
-          url: "https://www.pinterest.com",
+          name: "Investopedia",
+          icon: "investopedia",
+          url: "https://www.investopedia.com/",
         },
       ];
     },
