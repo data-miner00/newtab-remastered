@@ -23,10 +23,8 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  methods: {
-    // goBack(): void {
-    //   this.$router.go
-    // },
+  metaInfo: {
+    title: "Settings | Newtab Remastered",
   },
 });
 </script>

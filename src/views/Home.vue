@@ -51,6 +51,9 @@ export default Vue.extend({
     Header,
     ShortcutItem,
   },
+  metaInfo: {
+    title: "Your trusty new tab app | Newtab Remastered",
+  },
   data: () => ({
     searchQuery: "",
     serviceId: 1,
