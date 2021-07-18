@@ -38,6 +38,8 @@ There is a background photo shipped along with the app which is by Javier Garcia
 - [ ] Add data validation and error message
 - [ ] Improvement: Enable the dropdown to be close when click elsewhere
 - [ ] Improvement: Enable the selected service to be default
+- [x] Feat: Autofocus hotkey (Command + K)
+- [ ] Feat: Change service hotkey (Command + ?)
 - [ ] ...
 
 ## Category
