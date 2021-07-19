@@ -6,17 +6,18 @@ import {
   faCoffee,
   faChevronDown,
   faCaretDown,
-  faCloud,
-  faCloudMeatball,
-  faCloudMoon,
-  faCloudMoonRain,
-  faCloudRain,
-  faCloudShowersHeavy,
-  faCloudSun,
-  faCloudSunRain,
-  faMapMarkerAlt,
+  // faCloud,
+  // faCloudMeatball,
+  // faCloudMoon,
+  // faCloudMoonRain,
+  // faCloudRain,
+  // faCloudShowersHeavy,
+  // faCloudSun,
+  // faCloudSunRain,
+  // faMapMarkerAlt,
   faArrowLeft,
   faLanguage,
+  faHandSparkles,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faComment as farComment,
@@ -35,17 +36,18 @@ library.add(
   faCaretDown,
   farObjectUngroup,
   farMap, // not used
-  faCloud, // not used
-  faCloudMeatball, // not used
-  faCloudMoon, // not used
-  faCloudMoonRain, // not used
-  faCloudRain, // not used
-  faCloudShowersHeavy, // not used
-  faCloudSun, // not used
-  faCloudSunRain, // not used
-  faMapMarkerAlt, // not used
+  // faCloud, // not used
+  // faCloudMeatball, // not used
+  // faCloudMoon, // not used
+  // faCloudMoonRain, // not used
+  // faCloudRain, // not used
+  // faCloudShowersHeavy, // not used
+  // faCloudSun, // not used
+  // faCloudSunRain, // not used
+  // faMapMarkerAlt, // not used
   faArrowLeft,
-  faLanguage
+  faLanguage,
+  faHandSparkles
 );
 
 Vue.component("Fa", FontAwesomeIcon);
