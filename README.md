@@ -4,7 +4,15 @@ A project that was heavilly inspired by Google Chrome's new tab page and intends
 
 ## Screenshots
 
-![Screenshot](./screenshots/ss1.png)
+Here are some screenshots for the application. The background picture is a bad choice as some of the words in white colour does not contrast well. Currently dark background is only supported.
+
+### Main page
+
+![Main page](./screenshots/ss1.png)
+
+### Settings page
+
+![Settings page](./screenshots/ss2.png)
 
 ## Features
 
@@ -22,25 +30,27 @@ A project that was heavilly inspired by Google Chrome's new tab page and intends
 
 ## Todos
 
-- [ ] Add animating background
-- [ ] Video background
-- [x] Add change background capability
-- [ ] Add detect change on color saturation to color
-- [x] Add a page for user to change username
-- [x] Add a customization page for settings
-- [ ] Add i18n and Japanese translation
-- [ ] Add functionality to search for page
-- [ ] Add functionality to add a page
-- [ ] Add background user referral link on bottom left
-- [ ] Optimize performance
-- [x] Add return button to main page from setting page
+- [ ] Feat: Add animating background
+- [ ] Feat: Video background
+- [x] Feat: Add change background capability
+- [ ] Feat: Add detect change on color saturation to color
+- [x] Feat: Add a page for user to change username
+- [x] Feat: Add a customization page for settings
+- [ ] Feat: Add i18n and Japanese translation
+- [ ] Feat: Add functionality to search for page
+- [ ] Feat: Add functionality to add a page
+- [x] Feat: Add return button to main page from setting page
 - [x] Feat: Add clear or reset button
-- [ ] Add a custom message component ay quicklinks
-- [ ] Add data validation and error message
-- [ ] Improvement: Enable the dropdown to be close when click elsewhere
-- [ ] Improvement: Enable the selected service to be default
+- [ ] Feat: Add a custom message component at quicklinks
+- [ ] Feat: Add data validation and error message
+- [ ] Enhancement: Enable the dropdown to be close when click elsewhere
+- [ ] Enhancement: Enable the selected service to be default
 - [x] Feat: Autofocus hotkey (Command + K)
 - [ ] Feat: Change service hotkey (Command + ?)
+- [ ] Enhancement: Develop the 404 Page properly
+- [ ] Enhancement: Utilize vue-transition to provide transitons to pages and elements
+- [ ] Enhancement: Beautify the reset confirmation popup
+- [ ] Enhancement: Optimize overall app performance
 - [ ] ...
 
 ## Category
