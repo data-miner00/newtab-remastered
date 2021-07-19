@@ -1,10 +1,20 @@
 <template lang="pug">
   .settings
+    .settings__dialog-overlay(ref="overlay" @click.self="toggleConfirmDialog")
+      .settings__rusure-dialog
+        .wrap
+          h1.settings__rusure-dialog__title.title Reset All Settings
+          .settings__rusure-dialog__description Are you sure you want to remove all your current settings and restore to the default settings?
+        .settings__rusure-dialog__actions
+          .naah(@click="toggleConfirmDialog") Naah
+          .yeh(@click="confirmReset(); toggleConfirmDialog()") Yeh
     .settings__container
       .settings__container__header
         router-link.settings__container__header__back(to="/" title="Go back")
           fa(icon="arrow-left") 
         .settings__container__header__title Settings
+        .settings__container__header__reset(title="Reset settings" @click="toggleConfirmDialog")
+          fa(icon="hand-sparkles")
       .settings__container__settings
         .settings__container__settings__navigation
           router-link.navlink(:to="{ name: 'user' }" exact-active-class="eactive") User
@@ -21,10 +31,31 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { mapActions } from "vuex";
+import { removeAllLS } from "@/services";
 
 export default Vue.extend({
   metaInfo: {
     title: "Settings | Newtab Remastered",
+  },
+  methods: {
+    ...mapActions(["clearState"]),
+    toggleConfirmDialog(): void {
+      const overlayElement: HTMLDivElement = this.$refs
+        .overlay as HTMLDivElement;
+
+      if (!overlayElement) return;
+
+      if (overlayElement.style.display == "none") {
+        overlayElement.style.display = "flex";
+      } else {
+        overlayElement.style.display = "none";
+      }
+    },
+    confirmReset(): void {
+      this.clearState();
+      removeAllLS();
+    },
   },
 });
 </script>
@@ -34,6 +65,51 @@ export default Vue.extend({
 
 .settings {
   min-height: 100vh;
+  position: relative;
+
+  &__dialog-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  &__rusure-dialog {
+    width: 460px;
+    color: black;
+    height: 280px;
+    background: white;
+    padding: 40px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+
+    &__actions {
+      margin-top: auto;
+      display: flex;
+      justify-content: flex-end;
+      gap: 5px;
+      div {
+        text-align: center;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        width: 80px;
+        padding: 8px 0;
+        transition: background 0.2s, color 0.2s;
+        cursor: pointer;
+
+        &:hover {
+          background: #aaa;
+          color: white;
+        }
+      }
+    }
+  }
 
   &__container {
     width: 960px;
@@ -52,6 +128,12 @@ export default Vue.extend({
       &__title {
         font-size: 36px;
         font-weight: 600;
+      }
+
+      &__reset {
+        .icon(20px, true);
+        cursor: pointer;
+        margin-left: auto;
       }
     }
 
