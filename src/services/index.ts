@@ -54,3 +54,15 @@ export const setLS = (type: StorageType, value: string): void => {
 
   storageWorker(type, value);
 };
+
+export const removeAllLS = (): void => {
+  localStorage.removeItem(StorageType.USERNAME);
+  localStorage.removeItem(StorageType.AVATARURL);
+  localStorage.removeItem(StorageType.PLACE);
+  localStorage.removeItem(StorageType.MAILURL);
+  localStorage.removeItem(StorageType.MAPURL);
+  localStorage.removeItem(StorageType.NEWSURL);
+  localStorage.removeItem(StorageType.BGURL);
+  localStorage.removeItem(StorageType.CLOCKMODE);
+  localStorage.removeItem(StorageType.COLONMODE);
+};
