@@ -45,6 +45,18 @@ export default new Vuex.Store({
     },
   },
   // TODO: Add actions to remove and reset
-  actions: {},
+  actions: {
+    clearState({ commit, state }) {
+      commit("setUsername", null);
+      commit("setAvatarUrl", null);
+      commit("setMailUrl", null);
+      commit("setNewsUrl", null);
+      commit("setMapUrl", null);
+      commit("setBgUrl", null);
+      commit("setClockMode", false);
+      commit("setColonMode", false);
+      commit("setPlace", null);
+    },
+  },
   modules: {},
 });
