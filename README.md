@@ -4,7 +4,7 @@ A project that was heavilly inspired by Google Chrome's new tab page and intends
 
 ## Screenshots
 
-There is a background photo shipped along with the app which is by Javier Garcia on [Unsplash](https://unsplash.com/) at [this link](https://unsplash.com/photos/jJbQBP_yh68)
+![Screenshot](./screenshots/ss1.png)
 
 ## Features
 
@@ -23,6 +23,7 @@ There is a background photo shipped along with the app which is by Javier Garcia
 ## Todos
 
 - [ ] Add animating background
+- [ ] Video background
 - [x] Add change background capability
 - [ ] Add detect change on color saturation to color
 - [x] Add a page for user to change username
@@ -33,7 +34,7 @@ There is a background photo shipped along with the app which is by Javier Garcia
 - [ ] Add background user referral link on bottom left
 - [ ] Optimize performance
 - [x] Add return button to main page from setting page
-- [ ] Feat: Add clear or reset button
+- [x] Feat: Add clear or reset button
 - [ ] Add a custom message component ay quicklinks
 - [ ] Add data validation and error message
 - [ ] Improvement: Enable the dropdown to be close when click elsewhere
@@ -64,3 +65,9 @@ The categories used to describe the webpages as a whole based on their character
 ## To Nuxt or not to Nuxt
 
 This is an ongoing debate with myself whether should Nuxt it but maybe not coz it is too muchwork.
+
+## Attributions
+
+There is a background photo shipped along with the app which is by Javier Garcia on [Unsplash](https://unsplash.com/) at [this link](https://unsplash.com/photos/jJbQBP_yh68)
+
+The default profile picture was taken from Twitter and it belongs to [Twitter](https://twitter.com) and not my creation.
