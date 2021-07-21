@@ -6,7 +6,7 @@
         fa(icon="language")
       a.header__panel__icon.map(:href="mapUrl" title="Maps" target="_blank")
         fa(:icon="['far', 'map']")
-      a.header__panel__icon.app(:href="newsUrl" title="News" target="_blank")
+      a.header__panel__icon.news(:href="newsUrl" title="News" target="_blank")
         fa(:icon="['far', 'newspaper']")
       a.header__panel__icon.mail(:href="mailUrl" title="Email" target="_blank")
         fa(:icon="['far', 'envelope']")
