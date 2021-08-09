@@ -39,7 +39,6 @@ export const loadLS = (type: StorageType): void => {
   const value: string | null = localStorage.getItem(type);
 
   if (value) {
-    // TODO: Externalize switch case to a seperate func
     storageWorker(type, value);
   } else
     console.log(
