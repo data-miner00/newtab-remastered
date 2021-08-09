@@ -30,6 +30,9 @@ const storageWorker = (type: StorageType, value: string) => {
     case StorageType.PLACE:
       store.commit("setPlace", value);
       break;
+    case StorageType.SEARCHENGINE:
+      store.commit("setSearchEngine", JSON.parse(value));
+      break;
     default:
       console.log("u wot m8");
   }
@@ -64,4 +67,5 @@ export const removeAllLS = (): void => {
   localStorage.removeItem(StorageType.BGURL);
   localStorage.removeItem(StorageType.CLOCKMODE);
   localStorage.removeItem(StorageType.COLONMODE);
+  localStorage.removeItem(StorageType.SEARCHENGINE);
 };

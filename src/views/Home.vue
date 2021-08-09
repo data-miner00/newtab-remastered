@@ -45,9 +45,12 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { mapMutations } from "vuex";
 import Header from "../components/Header.vue";
 import ShortcutItem from "../components/ShortcutItem.vue";
 import DigitalClock from "../components/DigitalClock.vue";
+import { StorageType } from "../models/StorageType";
+import { setLS } from "../services/index";
 
 type ISearchEngineService = {
   id: number;
@@ -73,10 +76,10 @@ export default Vue.extend({
     serviceQueryString: "",
   }),
   mounted(): void {
-    // Selete the first search engine
-    this.selectService(1);
+    this.selectService(this.searchEngineIndex, true);
   },
   methods: {
+    ...mapMutations(["setSearchEngine"]),
     search(): void {
       // Check if the user hit enter but did not provide args
       // In this case do nothing and return
@@ -92,7 +95,7 @@ export default Vue.extend({
       }
       this.searchQuery = "";
     },
-    selectService(_id: number): void {
+    selectService(_id: number, onMount = false): void {
       const seaechboxElement: HTMLInputElement = this.$refs
         .searchbox as HTMLInputElement;
       const { id, service, logo, queryString }: ISearchEngineService =
@@ -102,6 +105,12 @@ export default Vue.extend({
       this.serviceLogo = logo;
       this.serviceQueryString = queryString;
       seaechboxElement.focus();
+
+      if (!onMount) {
+        // Set to local storage and store
+        this.setSearchEngine(_id);
+        setLS(StorageType.SEARCHENGINE, JSON.stringify(_id));
+      }
     },
     toggleSelector() {
       const selectorElement: HTMLDivElement = this.$refs.hid as HTMLDivElement;
@@ -267,6 +276,9 @@ export default Vue.extend({
     },
     place(): string {
       return this.$store.state.place || "Hypatia, Mars";
+    },
+    searchEngineIndex(): number {
+      return Number(this.$store.state.searchEngine) || 1;
     },
   },
 });

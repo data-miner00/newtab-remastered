@@ -14,6 +14,7 @@ export default new Vuex.Store({
     clockMode: false,
     colonMode: false,
     place: null,
+    searchEngine: null,
   },
   mutations: {
     setUsername(state, payload) {
@@ -43,6 +44,9 @@ export default new Vuex.Store({
     setPlace(state, payload) {
       state.place = payload;
     },
+    setSearchEngine(state, payload) {
+      state.searchEngine = payload;
+    },
   },
   // TODO: Add actions to remove and reset
   actions: {
@@ -56,6 +60,7 @@ export default new Vuex.Store({
       commit("setClockMode", false);
       commit("setColonMode", false);
       commit("setPlace", null);
+      commit("setSearchEngine", null);
     },
   },
   modules: {},
