@@ -1,5 +1,5 @@
 <template lang="pug">
-  .home(tabindex="0" @keydown.ctrl.prevent="navigateSearch")
+  .home(tabindex="0" @keydown.ctrl="navigateSearch")
     router-link.setting-button(to="/settings" title="Settings")
       fa(:icon="['far', 'object-ungroup']")
     Header/
@@ -150,8 +150,9 @@ export default Vue.extend({
 
       tipElement.style.visibility = "hidden";
     },
-    navigateSearch(evt: any): void {
+    navigateSearch(evt: KeyboardEvent): void {
       if (evt.key == "k") {
+        evt.preventDefault();
         const searchboxElement: HTMLInputElement = this.$refs
           .searchbox as HTMLInputElement;
         searchboxElement.focus();
