@@ -2,13 +2,13 @@
   .clock
     SettingItemSwitch(
       title="Set clock mode"
-      description="The clock will only load once and the time won't change unless refresh or remount, turn on will become an active clock."
+      description="The clock on the homepage will remain static and will not change as time goes as initially loaded. Enable this feature to have a real-time clock ticking."
       :initialData="initialClockMode"
       @change="clockModeChange"
     )
     SettingItemSwitch(
       title="Set colon blinking"
-      description="The colon is tranquil but will blink after on. It consumes some computation power so it is not recommended for crappy browser like yours."
+      description="This is just to spice up the clock on the homepage to look like an actual digital clock. Enable this feature to experience it for yourself."
       :initialData="initialColonMode"
       @change="colonModeChange"
     )

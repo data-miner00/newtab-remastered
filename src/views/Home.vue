@@ -277,7 +277,7 @@ export default Vue.extend({
       ];
     },
     place(): string {
-      return this.$store.state.place || "Hypatia, Mars";
+      return this.$store.state.place || "Sofia, Bulgaria";
     },
     searchEngineIndex(): number {
       return Number(this.$store.state.searchEngine) || 1;

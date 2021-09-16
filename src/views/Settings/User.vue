@@ -9,15 +9,15 @@
     )
     SettingItem(
       title="Set avatar"
-      description="The user avatar has no use but to show in the main page, so put anything all you want. provide the url to the imag."
+      description="The user avatar also has no use but to show in the main page. Just provide the web URL to the image will suffice."
       placeholder="eg. /profile.jpg"
       :initialData="initialAvatar"
       @change="avatarChange"
     )
     SettingItem(
       title="Set place"
-      description="The place or location that you resides, if possible. Else you can set at any place u want idgaf lol."
-      placeholder="eg. Mars"
+      description="The place or location that you you live. Alternatively you might provide any places that you desire, it's entirely up to you!"
+      placeholder="eg. Sofia, Bulgaria"
       :initialData="initialPlace"
       @change="placeChange"
     )

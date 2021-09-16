@@ -2,7 +2,7 @@
   .background
     SettingItem(
       title="Set background image"
-      description="Now, you are able to cuztomize the background picture however you want!!! Just provide the correct URL to the image will do."
+      description="You are able to cuztomize the background picture with any of the online-hosted images. All it takes is just the web URL to the image."
       placeholder="eg. /bg.jpg"
       :initialData="initialBg"
       @change="bgChange"

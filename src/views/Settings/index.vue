@@ -6,8 +6,8 @@
           h1.settings__rusure-dialog__title.title Reset All Settings
           .settings__rusure-dialog__description Are you sure you want to remove all your current settings and restore to the default settings?
         .settings__rusure-dialog__actions
-          .naah(@click="toggleConfirmDialog") Naah
-          .yeh(@click="confirmReset(); toggleConfirmDialog()") Yeh
+          .naah(@click="toggleConfirmDialog") Nope
+          .yeh(@click="confirmReset(); toggleConfirmDialog()") Yes
     .settings__container
       .settings__container__header
         router-link.settings__container__header__back(to="/" title="Go back")
@@ -22,6 +22,7 @@
           router-link.navlink(:to="{ name: 'clock' }" exact-active-class="eactive") Clock
           router-link.navlink(:to="{ name: 'background' }" exact-active-class="eactive") Background
           router-link.navlink(:to="{ name: 'server' }" exact-active-class="eactive") Server
+          router-link.navlink(:to="{ name: 'misc' }" exact-active-class="eactive") Misc
           .seperator
           router-link.navlink(:to="{ name: 'about' }" exact-active-class="eactive") About
           router-link.navlink(:to="{ name: 'privacy' }" exact-active-class="eactive") Privacy

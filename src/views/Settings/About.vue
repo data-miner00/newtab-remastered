@@ -1,9 +1,9 @@
 <template lang="pug">
   .about 
     .about__app Newtab Remastered
-    .about__version Version 1.0.0
+    .about__version Version 1.1.0
     .about__description 
-      | Tried to be minimal but as functions grows the heavier the app gets sadge.
+      | A lightweight application that mimics the typical new tab page but have elevated functionalities that suits well.
     .about__github 
       | The source code can be found on #[a.gh(href="https://github.com/data-miner00/newtab-remastered" target="blank") Github]
 </template>
