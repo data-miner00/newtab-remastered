@@ -38,6 +38,7 @@ export default Vue.extend({
 #app {
   position: relative;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .bg-img {
