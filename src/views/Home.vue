@@ -85,10 +85,11 @@ export default Vue.extend({
       // In this case do nothing and return
       if (!this.searchQuery) return;
 
-      // Check if the args is a link
-      // TODO: include coverage for http, non http[s] using regex
-      if (this.searchQuery.startsWith("https://")) {
+      // Check if the args is a url
+      if (this.searchQuery.search(/^https?:\/\/\w+/) >= 0) {
         window.open(this.searchQuery, "_blank");
+      } else if (this.searchQuery.search(/^(\w+\.?){1,}/) >= 0) {
+        window.open("https://" + this.searchQuery, "_blank");
       } else {
         const parsedSearchText: string = encodeURIComponent(this.searchQuery);
         window.open(this.serviceQueryString + parsedSearchText, "_blank");
