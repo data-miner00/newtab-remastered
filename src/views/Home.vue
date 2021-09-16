@@ -90,7 +90,7 @@ export default Vue.extend({
       if (this.searchQuery.startsWith("https://")) {
         window.open(this.searchQuery, "_blank");
       } else {
-        const parsedSearchText: string = this.searchQuery.replaceAll(" ", "+");
+        const parsedSearchText: string = encodeURIComponent(this.searchQuery);
         window.open(this.serviceQueryString + parsedSearchText, "_blank");
       }
       this.searchQuery = "";
