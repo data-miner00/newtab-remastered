@@ -52,6 +52,12 @@ const routes: Array<RouteConfig> = [
           ),
       },
       {
+        path: "misc",
+        name: "misc",
+        component: () =>
+          import(/* webpackChunkName: "misc" */ "../views/Settings/Misc.vue"),
+      },
+      {
         path: "about",
         name: "about",
         // route level code-splitting
