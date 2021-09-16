@@ -44,13 +44,15 @@ Here are some screenshots for the application. The background picture is a bad c
 - [ ] Feat: Add a custom message component at quicklinks
 - [ ] Feat: Add data validation and error message
 - [ ] Enhancement: Enable the dropdown to be close when click elsewhere
-- [ ] Enhancement: Enable the selected service to be default
+- [x] Enhancement: Enable the selected service to be default
 - [x] Feat: Autofocus hotkey (Command + K)
 - [ ] Feat: Change service hotkey (Command + ?)
-- [ ] Enhancement: Develop the 404 Page properly
+- [x] Enhancement: Develop the 404 Page properly
 - [ ] Enhancement: Utilize vue-transition to provide transitons to pages and elements
 - [ ] Enhancement: Beautify the reset confirmation popup
 - [ ] Enhancement: Optimize overall app performance
+- [x] Feat: Add an option whether to blur the bg or not
+- [ ] Enhancement: Add MOBILE RESPONSIVENESS
 - [ ] ...
 
 ## Category
