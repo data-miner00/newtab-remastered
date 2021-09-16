@@ -15,6 +15,7 @@ export default new Vuex.Store({
     colonMode: false,
     place: null,
     searchEngine: null,
+    bgBlur: null,
   },
   mutations: {
     setUsername(state, payload) {
@@ -47,6 +48,9 @@ export default new Vuex.Store({
     setSearchEngine(state, payload) {
       state.searchEngine = payload;
     },
+    setBgBlur(state, payload) {
+      state.bgBlur = payload;
+    },
   },
   // TODO: Add actions to remove and reset
   actions: {
@@ -61,6 +65,7 @@ export default new Vuex.Store({
       commit("setColonMode", false);
       commit("setPlace", null);
       commit("setSearchEngine", null);
+      commit("setBgBlur", null);
     },
   },
   modules: {},

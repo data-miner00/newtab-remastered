@@ -9,4 +9,5 @@ export enum StorageType {
   COLONMODE = "colonMode",
   PLACE = "place",
   SEARCHENGINE = "searchEngine",
+  BGBLUR = "backgroundBlur",
 }
