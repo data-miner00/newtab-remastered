@@ -7,6 +7,13 @@
       :initialData="initialBg"
       @change="bgChange"
     )
+    SettingItem(
+      title="Blur background set"
+      description="Sometimes the image might be having a bad contrast with this application. You can set the blurryness in pixels (px) to see the effect."
+      placeholder="eg. 5"
+      :initialData="blurBg"
+      @change="blurChange"
+    )
 </template>
 
 <script lang="ts">
@@ -23,10 +30,16 @@ export default Vue.extend({
     bgChange(newUrl: string): void {
       setLS(StorageType.BGURL, newUrl);
     },
+    blurChange(newBlur: string): void {
+      setLS(StorageType.BGBLUR, newBlur);
+    },
   },
   computed: {
     initialBg(): string {
       return this.$store.state.bgUrl || "";
+    },
+    blurBg(): string {
+      return this.$store.state.bgBlur || "";
     },
   },
 });
