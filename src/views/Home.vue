@@ -86,9 +86,9 @@ export default Vue.extend({
       if (!this.searchQuery) return;
 
       // Check if the args is a url
-      if (/^https?:\/\/(\w+\.?){2,}$/g.test(this.searchQuery)) {
+      if (/^https?:\/\/\w+\.(\w+\.?)+$/g.test(this.searchQuery)) {
         window.open(this.searchQuery, "_blank");
-      } else if (/^(\w+\.?){2,}$/g.test(this.searchQuery)) {
+      } else if (/^\w+\.(\w+\.?)+$/g.test(this.searchQuery)) {
         window.open("https://" + this.searchQuery, "_blank");
       } else {
         const parsedSearchText: string = encodeURIComponent(this.searchQuery);
