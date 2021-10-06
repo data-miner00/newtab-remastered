@@ -1,5 +1,5 @@
 <template lang="pug">
-  .home(tabindex="0" @keydown.ctrl.prevent="navigateSearch")
+  .home(tabindex="0" @keydown.ctrl="navigateSearch")
     router-link.setting-button(to="/settings" title="Settings")
       fa(:icon="['far', 'object-ungroup']")
     Header/
@@ -45,9 +45,12 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { mapMutations } from "vuex";
 import Header from "../components/Header.vue";
 import ShortcutItem from "../components/ShortcutItem.vue";
 import DigitalClock from "../components/DigitalClock.vue";
+import { StorageType } from "../models/StorageType";
+import { setLS } from "../services/index";
 
 type ISearchEngineService = {
   id: number;
@@ -73,26 +76,27 @@ export default Vue.extend({
     serviceQueryString: "",
   }),
   mounted(): void {
-    // Selete the first search engine
-    this.selectService(1);
+    this.selectService(this.searchEngineIndex, true);
   },
   methods: {
+    ...mapMutations(["setSearchEngine"]),
     search(): void {
       // Check if the user hit enter but did not provide args
       // In this case do nothing and return
       if (!this.searchQuery) return;
 
-      // Check if the args is a link
-      // TODO: include coverage for http, non http[s] using regex
-      if (this.searchQuery.startsWith("https://")) {
+      // Check if the args is a url
+      if (/^https?:\/\/(\w+\.?){2,}$/g.test(this.searchQuery)) {
         window.open(this.searchQuery, "_blank");
+      } else if (/^(\w+\.?){2,}$/g.test(this.searchQuery)) {
+        window.open("https://" + this.searchQuery, "_blank");
       } else {
-        const parsedSearchText: string = this.searchQuery.replaceAll(" ", "+");
+        const parsedSearchText: string = encodeURIComponent(this.searchQuery);
         window.open(this.serviceQueryString + parsedSearchText, "_blank");
       }
       this.searchQuery = "";
     },
-    selectService(_id: number): void {
+    selectService(_id: number, onMount = false): void {
       const seaechboxElement: HTMLInputElement = this.$refs
         .searchbox as HTMLInputElement;
       const { id, service, logo, queryString }: ISearchEngineService =
@@ -102,6 +106,12 @@ export default Vue.extend({
       this.serviceLogo = logo;
       this.serviceQueryString = queryString;
       seaechboxElement.focus();
+
+      if (!onMount) {
+        // Set to local storage and store
+        this.setSearchEngine(_id);
+        setLS(StorageType.SEARCHENGINE, JSON.stringify(_id));
+      }
     },
     toggleSelector() {
       const selectorElement: HTMLDivElement = this.$refs.hid as HTMLDivElement;
@@ -141,8 +151,9 @@ export default Vue.extend({
 
       tipElement.style.visibility = "hidden";
     },
-    navigateSearch(evt: any): void {
+    navigateSearch(evt: KeyboardEvent): void {
       if (evt.key == "k") {
+        evt.preventDefault();
         const searchboxElement: HTMLInputElement = this.$refs
           .searchbox as HTMLInputElement;
         searchboxElement.focus();
@@ -266,7 +277,10 @@ export default Vue.extend({
       ];
     },
     place(): string {
-      return this.$store.state.place || "Hypatia, Mars";
+      return this.$store.state.place || "Sofia, Bulgaria";
+    },
+    searchEngineIndex(): number {
+      return Number(this.$store.state.searchEngine) || 1;
     },
   },
 });

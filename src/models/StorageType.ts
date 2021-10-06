@@ -8,4 +8,6 @@ export enum StorageType {
   CLOCKMODE = "clockMode",
   COLONMODE = "colonMode",
   PLACE = "place",
+  SEARCHENGINE = "searchEngine",
+  BGBLUR = "backgroundBlur",
 }

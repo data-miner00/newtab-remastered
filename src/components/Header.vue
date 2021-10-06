@@ -24,9 +24,7 @@ import Vue from "vue";
 export default Vue.extend({
   computed: {
     username(): string {
-      return (
-        this.$store.state.username || "Abdullah Tan bin Lim Ismail Yong Kang"
-      );
+      return this.$store.state.username || "Lim Yong Kang";
     },
     avatarUrl(): string {
       return this.$store.state.avatarUrl || "profile.png";

@@ -2,10 +2,17 @@
   .background
     SettingItem(
       title="Set background image"
-      description="Now, you are able to cuztomize the background picture however you want!!! Just provide the correct URL to the image will do."
+      description="You are able to cuztomize the background picture with any of the online-hosted images. All it takes is just the web URL to the image."
       placeholder="eg. /bg.jpg"
       :initialData="initialBg"
       @change="bgChange"
+    )
+    SettingItem(
+      title="Blur background set"
+      description="Sometimes the image might be having a bad contrast with this application. You can set the blurryness in pixels (px) to see the effect."
+      placeholder="eg. 5"
+      :initialData="blurBg"
+      @change="blurChange"
     )
 </template>
 
@@ -23,10 +30,16 @@ export default Vue.extend({
     bgChange(newUrl: string): void {
       setLS(StorageType.BGURL, newUrl);
     },
+    blurChange(newBlur: string): void {
+      setLS(StorageType.BGBLUR, newBlur);
+    },
   },
   computed: {
     initialBg(): string {
       return this.$store.state.bgUrl || "";
+    },
+    blurBg(): string {
+      return this.$store.state.bgBlur || "";
     },
   },
 });

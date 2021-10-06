@@ -1,7 +1,7 @@
 <template lang="pug">
   #app
     .bg-img
-      img(:src="backgroundImgUrl")
+      img(:src="backgroundImgUrl" :style="{ filter: `blur(${backgroundBlur}px)`}")
     
     router-view/
 </template>
@@ -22,10 +22,15 @@ export default Vue.extend({
     loadLS(StorageType.CLOCKMODE);
     loadLS(StorageType.COLONMODE);
     loadLS(StorageType.PLACE);
+    loadLS(StorageType.SEARCHENGINE);
+    loadLS(StorageType.BGBLUR);
   },
   computed: {
     backgroundImgUrl(): string {
       return this.$store.state.bgUrl || "/test2.jpg";
+    },
+    backgroundBlur(): string {
+      return this.$store.state.bgBlur || "0";
     },
   },
 });
@@ -37,6 +42,7 @@ export default Vue.extend({
 #app {
   position: relative;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .bg-img {
