@@ -15,10 +15,12 @@
     font-weight: 700;
     margin-bottom: 1em;
   }
+
   &__version {
     font-size: 1.5em;
     margin-bottom: 0.75em;
   }
+
   &__github {
     .gh {
       font-weight: 700;

@@ -3,5 +3,3 @@
     h1.title Server settings
     .description The server and its functionalities are currently under development.
 </template>
-
-<style lang="less" scoped></style>

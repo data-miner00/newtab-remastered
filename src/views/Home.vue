@@ -30,17 +30,27 @@
           .tips(ref="tip") CTRL+K
       .shortcut-section
         .some 
-        .shortcut-container
-          ShortcutItem(
-            v-for="(shortcut, index) in shortcuts"
-            :key="index"
-            :icon="shortcut.icon"
-            :name="shortcut.name"
-            :url="shortcut.url"
-          )
+        .wrapper
+          transition(name="slide")
+            .shortcut-container(key="page1" v-if="page")
+              ShortcutItem(
+                v-for="(shortcut, index) in shortcuts"
+                :key="index"
+                :icon="shortcut.icon"
+                :name="shortcut.name"
+                :url="shortcut.url"
+              )
+            .shortcut-container(key="page2" v-else)
+              ShortcutItem(
+                v-for="(shortcut, index) in shortcutspg2"
+                :key="index"
+                :icon="shortcut.icon"
+                :name="shortcut.name"
+                :url="shortcut.url"
+              )
         .bottom-part
-          .left
-          .right View full list &gt;&gt;
+          .left(@click="page=true") &lt;&lt; View previous list
+          .right(@click="page=false") View next list &gt;&gt;
 </template>
 
 <script lang="ts">
@@ -74,6 +84,8 @@ export default Vue.extend({
     service: "",
     serviceLogo: "",
     serviceQueryString: "",
+
+    page: true,
   }),
   mounted(): void {
     this.selectService(this.searchEngineIndex, true);
@@ -86,9 +98,9 @@ export default Vue.extend({
       if (!this.searchQuery) return;
 
       // Check if the args is a url
-      if (/^https?:\/\/(\w+\.?){2,}$/g.test(this.searchQuery)) {
+      if (/^https?:\/\/\w+\.(\w+\.?)+$/g.test(this.searchQuery)) {
         window.open(this.searchQuery, "_blank");
-      } else if (/^(\w+\.?){2,}$/g.test(this.searchQuery)) {
+      } else if (/^\w+\.(\w+\.?)+$/g.test(this.searchQuery)) {
         window.open("https://" + this.searchQuery, "_blank");
       } else {
         const parsedSearchText: string = encodeURIComponent(this.searchQuery);
@@ -255,9 +267,9 @@ export default Vue.extend({
           url: "https://www.github.com",
         },
         {
-          name: "Reddit",
-          icon: "reddit",
-          url: "https://www.reddit.com",
+          name: "777tv",
+          icon: "777tv",
+          url: "https://777tv.app/",
         },
         {
           name: "Next.js",
@@ -276,6 +288,60 @@ export default Vue.extend({
         },
       ];
     },
+    shortcutspg2() {
+      return [
+        {
+          name: "Rust",
+          icon: "rust",
+          url: "https://www.rust-lang.org/",
+        },
+        {
+          name: "Go",
+          icon: "go",
+          url: "https://golang.org/",
+        },
+        {
+          name: "Tailwind",
+          icon: "tailwind",
+          url: "https://tailwindcss.com/",
+        },
+        {
+          name: "ReScript",
+          icon: "rescript",
+          url: "https://rescript-lang.org/",
+        },
+        {
+          name: "Preact",
+          icon: "preact",
+          url: "https://preactjs.com/",
+        },
+        {
+          name: "Laravel",
+          icon: "laravel",
+          url: "https://laravel.com/",
+        },
+        {
+          name: "Electron",
+          icon: "electron",
+          url: "https://www.electronjs.org/",
+        },
+        {
+          name: "Gridsome",
+          icon: "gridsome",
+          url: "https://gridsome.org/",
+        },
+        {
+          name: "Flutter",
+          icon: "flutter",
+          url: "https://flutter.dev/",
+        },
+        {
+          name: "F#",
+          icon: "fsharp",
+          url: "https://fsharp.org/",
+        },
+      ];
+    },
     place(): string {
       return this.$store.state.place || "Sofia, Bulgaria";
     },
@@ -289,6 +355,8 @@ export default Vue.extend({
 <style lang="less" scoped>
 @import "../assets/less/_variables.less";
 @import "../assets/less/components/icon.less";
+@import "../assets/less/transitions/linkPanel.less";
+
 .home {
   height: 100vh;
 }
@@ -316,10 +384,8 @@ export default Vue.extend({
 
 .searchbox {
   width: 100%;
-
   display: flex;
   background: white;
-
   border-radius: 5px;
   border: 1px solid #eee;
 
@@ -370,6 +436,7 @@ export default Vue.extend({
       }
     }
   }
+
   .search-input {
     flex-grow: 1;
     position: relative;
@@ -407,13 +474,25 @@ export default Vue.extend({
 
 .shortcut-section {
   width: 100%;
-  .shortcut-container {
+  position: relative;
+
+  .wrapper {
+    position: relative;
     width: 100%;
+    height: calc(234px);
     margin: 20px 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+
+    .shortcut-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
   }
+
   .bottom-part {
     margin-top: 10px;
     display: flex;
@@ -423,6 +502,7 @@ export default Vue.extend({
     background: rgba(0, 0, 0, 0.2);
     border-radius: 5px;
 
+    .left,
     .right {
       cursor: pointer;
 
