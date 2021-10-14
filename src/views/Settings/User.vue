@@ -66,8 +66,10 @@ export default Vue.extend({
 <style lang="less" scoped>
 .setting-item {
   margin-bottom: 20px;
+
   .input-wrap {
     margin-top: 10px;
+
     input {
       outline: none;
       border: none;

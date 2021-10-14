@@ -80,6 +80,7 @@ export default Vue.extend({
     justify-content: center;
     align-items: center;
   }
+
   &__rusure-dialog {
     width: 460px;
     color: black;
@@ -95,6 +96,7 @@ export default Vue.extend({
       display: flex;
       justify-content: flex-end;
       gap: 5px;
+
       div {
         text-align: center;
         border: 1px solid #aaa;
@@ -120,6 +122,7 @@ export default Vue.extend({
       border-bottom: 1px solid #eee;
       padding: 20px 0;
       display: flex;
+
       &__back {
         .icon(20px, true);
         cursor: pointer;

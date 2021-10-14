@@ -289,6 +289,7 @@ export default Vue.extend({
 <style lang="less" scoped>
 @import "../assets/less/_variables.less";
 @import "../assets/less/components/icon.less";
+
 .home {
   height: 100vh;
 }
@@ -316,10 +317,8 @@ export default Vue.extend({
 
 .searchbox {
   width: 100%;
-
   display: flex;
   background: white;
-
   border-radius: 5px;
   border: 1px solid #eee;
 
@@ -370,6 +369,7 @@ export default Vue.extend({
       }
     }
   }
+
   .search-input {
     flex-grow: 1;
     position: relative;
@@ -407,6 +407,7 @@ export default Vue.extend({
 
 .shortcut-section {
   width: 100%;
+
   .shortcut-container {
     width: 100%;
     margin: 20px 0 0;
@@ -414,6 +415,7 @@ export default Vue.extend({
     flex-wrap: wrap;
     gap: 10px;
   }
+
   .bottom-part {
     margin-top: 10px;
     display: flex;

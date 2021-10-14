@@ -32,6 +32,7 @@ export default Vue.extend({
       font-size: 96px;
       font-weight: 800;
     }
+
     &__description {
       width: 500px;
       background: rgba(0, 0, 0, 0.4);
@@ -42,6 +43,7 @@ export default Vue.extend({
         font-weight: 800;
       }
     }
+
     &__back-btn {
       display: block;
       padding: 16px 20px;
