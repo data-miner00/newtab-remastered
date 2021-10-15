@@ -409,6 +409,7 @@ export default Vue.extend({
     }
 
     .hidden-selector {
+      z-index: 10;
       position: absolute;
       top: calc(100% + 5px);
       left: 0;
